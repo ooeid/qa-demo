@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  test-api:
+  test:
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -24,7 +24,7 @@ jobs:
           npm install -g newman
           npm install -g newman-reporter-htmlextra
 
-
+      #
 
 
       # Make directory to upload the test results
@@ -45,3 +45,8 @@ jobs:
         with:
           name: RunReports
           path: testoutput
+
+      - name: cypress 
+        run: npx cypress run 
+
+
