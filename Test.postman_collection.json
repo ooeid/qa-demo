@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "a0fd49d5-a8b4-4f4f-b6ab-cbdad6c6bdb1",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://node-fake-api-server.herokuapp.com/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-FakeAPI-Action",
+						"value": "register",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"external_id\": \"postman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://node-fake-api-server.herokuapp.com/",
+					"protocol": "https",
+					"host": [
+						"node-fake-api-server",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://node-fake-api-server.herokuapp.com/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "NDllNmZhMzEtMTllOS00MTM3LWJjYWMtMzU3OWQ4OTk0ZjI2OjIyNzBlZTJkLWRkZTgtNDdhYi05ZGFmLTE1ZjY4YjY5MzA5MA==",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-FakeAPI-Action",
+						"value": "record",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"method\": \"get\",\r\n\t\"path\": \"/hello-world\",\r\n\t\"query_parameters\": {\r\n\t\t\"whom\": \"baz\"\r\n\t},\r\n\t\"responses\": [\r\n\t\t{\r\n\t\t\t\"status\": 200,\r\n\t\t\t\"content\": \"Hello baz!\",\r\n\t\t\t\"content_type\": \"text/plain\"\r\n\t\t}\r\n\t]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://node-fake-api-server.herokuapp.com/",
+					"protocol": "https",
+					"host": [
+						"node-fake-api-server",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://www.google.com.sa/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "https://www.mariedrake.com/post/api-testing-using-jest-and-supertest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
