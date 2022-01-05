@@ -32,6 +32,7 @@ jobs:
         run: mkdir -p testResults
 
 
+
       # Run the POSTMAN collection
       - name: Run POSTMAN collection
         run: |
