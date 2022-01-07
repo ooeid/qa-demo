@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
 
       # INstall Node on the runner
@@ -36,15 +36,15 @@ jobs:
       # Run the POSTMAN collection
       - name: Run POSTMAN collection
         run: |
-          # newman run Test-My.postman_collection.json -r htmlextra --reporter-htmlextra-export 
+          # newman run ./Test-My.postman_collection.json -r htmlextra --reporter-htmlextra-export newman run Demo-My.postman_collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme  > testResults/runreport1.html
 
 
       # Upload the contents of Test Results directory to workspace
       - name: Output the run Details
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: RunReports
-          path: testoutput
+          path: ./testoutput
 
       - name: cypress 
         run: npx cypress run --record --key 5fd3439a-e963-4d6d-8473-48d891368b13
