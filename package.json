@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^9.2.0"
+    "cypress": "^9.2.0",
+    "newman-reporter-html": "^1.0.5",
+    "newman-reporter-htmlextra": "^1.22.3"
   },
   "devDependencies": {
     "newman": "^5.3.0"
