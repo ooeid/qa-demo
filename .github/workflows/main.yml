@@ -2,51 +2,39 @@ name: Test-Build
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
-  test:
+  test-api:
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+      
+    # INstall Node on the runner
+    - name: Install Node
+      uses: actions/setup-node@v1
+      with: 
+        node-version: '12.x'
+    
+    # Install the newman command line utility and also install the html extra reporter
+    - name: Install newman
+      run: |
+       npm install -g newman
+       npm install -g newman-reporter-htmlextra
+
+    # Make directory to upload the test results
+    - name: Make Directory for results
+      run: mkdir -p testResults
 
 
-      # INstall Node on the runner
-      - name: Install Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: "12.x"
+    # Run the POSTMAN collection
+    - name: Run POSTMAN collection
+      run: |
+       newman run ./Test-My.postman_collection.json -e ./tests/pokemonapi-env.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme  > testResults/runreport1.html
 
-
-      # Install the newman command line utility and also install the html extra reporter
-      - name: Install newman
-        run: |
-          npm install -g newman
-          npm install -g newman-reporter-htmlextra
-
-      #
-
-
-      # Make directory to upload the test results
-      - name: Make Directory for results
-        run: mkdir -p testoutput
-
-
-
-      # Run the POSTMAN collection
-      - name: Run POSTMAN collection
-        run: |
-          # newman run Test-My.postman_collection.json -r htmlextra --reporter-htmlextra-export 
-
-
-      # Upload the contents of Test Results directory to workspace
-      - name: Output the run Details
-        uses: actions/upload-artifact@v2
-        with:
-          name: RunReports
-          path: testoutput
-
-      - name: cypress 
-        run: npx cypress run --record --key 5fd3439a-e963-4d6d-8473-48d891368b13
-
-
+    # Upload the contents of Test Results directory to workspace
+    - name: Output the run Details
+      uses: actions/upload-artifact@v2
+      with: 
+       name: RunReports
+       path: testResults
