@@ -36,7 +36,7 @@ jobs:
       # Run the POSTMAN collection
       - name: Run POSTMAN collection
         run: |
-          # newman run Test-My.postman_collection.json -r htmlextra --reporter-htmlextra-export testoutput/htmlreport.html --reporter-htmlextra-darkTheme  > testoutput/runreport1.html
+          # newman run Test-My.postman_collection.json -r htmlextra --reporter-htmlextra-export 
 
 
       # Upload the contents of Test Results directory to workspace
