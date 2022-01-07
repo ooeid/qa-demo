@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: RunReports
-          path: ./testoutput/build
+          path: ./testoutput*
 
       - name: cypress 
         run: npx cypress run --record --key 5fd3439a-e963-4d6d-8473-48d891368b13
