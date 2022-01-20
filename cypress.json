@@ -1,5 +1,7 @@
 {
     "watchForFileChanges": false,
-    "projectId": "ty7mvw"
+    "projectId": "ty7mvw",
+    "experimentalStudio": true, 
+    "reporter": "cypress-mochawesome-reporter"
 
 }
